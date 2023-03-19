@@ -1,0 +1,9 @@
+type Donation {
+  id: ID!
+  amount: Float
+  interval: Interval
+  nextDonation: DateTime
+  paymentMethod: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}

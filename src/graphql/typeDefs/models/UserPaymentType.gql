@@ -1,0 +1,9 @@
+type UserPaymentType
+ {
+  id: ID!
+  user: User
+  paymentType: PaymentType
+  paymentNumber: String
+  createdAt: DateTime
+  updatedAt: DateTime    
+}

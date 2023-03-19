@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  grapevine-db:
+    image: postgres
+    container_name: grapevine-db
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    # Not persisted
+    # volumes:
+    #   - postgres-data:/var/lib/postgresql/data
+    networks:
+      - grapevine
+    expose:
+      - 5432
+    env_file:
+      - .env
+    ports:
+      - ${DB_HOST_PORT}:5432
+
+  grapevine-pgadmin:
+    container_name: grapevine-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "grapevinepwd"
+    networks:
+      - grapevine
+    ports:
+      - ${DB_ADMIN_PORT}:80
+    depends_on:
+      - grapevine-db
+
+  grapevine-app:
+    container_name: grapevine-app
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      args:
+          - PERSONAL_TOKEN_GITHUB=${PERSONAL_TOKEN_GITHUB}
+    networks:
+      - grapevine
+    volumes:
+      - .:/share
+    ports:
+      - ${PORT}:${PORT}
+      - ${NODE_DEBUG_PORT:-9229}:9229
+    depends_on:
+      - grapevine-db
+networks:
+  grapevine:

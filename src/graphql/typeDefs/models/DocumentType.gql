@@ -1,0 +1,6 @@
+type DocumentType {
+  id: ID!
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
