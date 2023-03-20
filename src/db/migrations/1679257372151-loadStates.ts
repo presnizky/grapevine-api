@@ -31,7 +31,6 @@ export class loadStates1679257372151 implements MigrationInterface {
                   return state;
                 });
           
-                console.log('states: ', states)
                 await queryRunner.manager.save(states);
               }
 
