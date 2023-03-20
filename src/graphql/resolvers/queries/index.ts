@@ -1,5 +1,5 @@
-import userQuery from './user';
+import userQueries from './user';
 
 export default {
-  ...userQuery,
+  ...userQueries,
 };

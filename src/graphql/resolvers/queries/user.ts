@@ -1,5 +1,11 @@
+import {User} from '@models';
+import {UserService} from '@services';
+
+const users = async (): Promise<User[]> => {
+  const users = await UserService.getUsers();
+  return users || [];
+}
+
 export default {
-  me(_root: any, { name }: any, _context: any) {
-    return `Hello, I'm ${name}`;
-  },
-};
+  users
+}

@@ -1,3 +1,7 @@
-import userQueryTypeDef from './user.gql';
+import * as userQueryTypeDef from './user.gql';
+import * as  donationQueryTypeDef from './donation.gql';
 
-export default [userQueryTypeDef];
+export default [
+    userQueryTypeDef, 
+    donationQueryTypeDef
+];
