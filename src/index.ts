@@ -1,6 +1,6 @@
 // import "reflect-metadata";
 import { startServer } from "./app";
-import AppDataSource from "@db";
+import { AppDataSource } from "@db";
 
 async function main() {
     AppDataSource.initialize()
