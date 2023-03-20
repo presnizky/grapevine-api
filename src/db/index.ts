@@ -1,19 +1,16 @@
 import { DataSource } from "typeorm";
-import {getConfig} from '@config';
+import { DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_HOST_PORT } from '@config/variables';
 
-const dbConfig = getConfig();
 
-const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({
     type: "postgres",
-    host: dbConfig.database.host,
-    port: dbConfig.database.port,
-    username: dbConfig.database.user,
-    password: dbConfig.database.pass,
-    database: dbConfig.database.dbName,
+    host: DB_HOST,
+    port: DB_HOST_PORT,
+    username: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_DATABASE,
     synchronize: true,
     entities: ["./src/models/**/*.ts"],
     migrations: ["./src/db/migrations/**/*.ts"],
     migrationsTableName: "migrations"
 });
-
-export default AppDataSource;

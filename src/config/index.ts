@@ -1,7 +1,5 @@
-import { getBaseConfig } from '@db/credentials';
+import { initialize } from './initializers';
 
-export function getConfig() {
-    return {
-        database: getBaseConfig(),
-    }
+export function applyConfig() {
+  initialize();
 }

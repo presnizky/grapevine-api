@@ -1,1 +1,0 @@
-export {apolloServer} from './apollo';

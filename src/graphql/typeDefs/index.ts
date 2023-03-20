@@ -1,11 +1,13 @@
+import { typeDefs as scalarTypeDefs } from 'graphql-scalars';
 import baseTypeDef from './base';
 import modelsTypeDef from './models';
-import { typeDefs as scalarTypeDefs } from 'graphql-scalars';
+import queryTypeDef from './queries';
 
 const typeDefs = [
-    ...scalarTypeDefs,
-    ...baseTypeDef,
-    ...modelsTypeDef
+  ...scalarTypeDefs,
+  ...baseTypeDef,
+  ...modelsTypeDef,
+  ...queryTypeDef,
 ];
 
 export default typeDefs;
