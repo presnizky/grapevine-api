@@ -1,6 +1,0 @@
-type Country {
-  id: ID!
-  name: String
-  createdAt: DateTime
-  updatedAt: DateTime
-}

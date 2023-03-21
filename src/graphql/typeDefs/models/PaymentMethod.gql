@@ -1,0 +1,10 @@
+type PaymentMethod {
+  id: ID!
+  user: User
+  name: String
+  creditCardNumber: String
+  expirationDate: DateTime
+  ccv: Integer
+  createdAt: DateTime
+  updatedAt: DateTime    
+}

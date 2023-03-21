@@ -1,19 +1,25 @@
-import { Donation, PaymentMethod, Subscription } from '@models';
 import {BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
+import { Donation, Subscription, User } from '@models';
 
-@Entity('users')
-export class User extends BaseEntity {
+@Entity('paymentMethods')
+export class PaymentMethod extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
     
-    @Column()
-    firstName: string;
+    @ManyToOne(() => User, (user) => user.id)
+    user: User;
 
     @Column()
-    lastName: string;
+    name: string;
 
-    @OneToMany(() => PaymentMethod, (paymentMethod) => paymentMethod.user)
-    paymentMethods: PaymentMethod[]
+    @Column()
+    creditCardNumber: string;
+
+    @Column()
+    expirationDate: Date;
+
+    @Column()
+    ccv: number;
 
     @OneToMany(() => Subscription, (subscription) => subscription.user)
     subscriptions: Subscription[]

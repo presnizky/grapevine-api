@@ -1,26 +1,26 @@
 import {BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
-import { PaymentMethod, Subscription, User } from '@models';
+import { PaymentMethod, User } from '@models';
 
-@Entity('donations')
-export class Donation extends BaseEntity {
+@Entity('subscriptions')
+export class Subscription extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @ManyToOne(() => User, (user) => user.id)
   user: User;
-  
-  @ManyToOne(() => Subscription, (subscription) => subscription.id)
-  subscription: Subscription;
-  
+
+  @Column()
+  startDate: Date;
+
+  @Column()
+  interval: string;
+
   @ManyToOne(() => PaymentMethod, (paymentMethod) => paymentMethod.id)
   paymentMethod: PaymentMethod;
 
   @Column()
   amount: number;
 
-  @Column()
-  nextPaymentDate: Date;
-  
   @CreateDateColumn()
   createdAt: Date;
 

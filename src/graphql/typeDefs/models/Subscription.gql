@@ -1,0 +1,10 @@
+type Subscription {
+  id: ID!
+  user: User
+  startDate: DateTime
+  interval: String
+  paymentMethod: PaymentMethod
+  amount: Float
+  createdAt: DateTime
+  updatedAt: DateTime    
+}
