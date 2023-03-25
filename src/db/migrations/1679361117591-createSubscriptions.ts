@@ -14,14 +14,16 @@ export class createSubscriptions1679361117591 implements MigrationInterface {
         // Create one subscription for each user and payment method
         const subscriptions: Subscription[] = [];
         users.forEach(async (user) => {
-          const subscription = new Subscription();
-          subscription.user = user;
-          subscription.startDate = new Date(new Date().getTime() - Math.floor(Math.random() * 7889400000) - 2592000000 * 3); // Set start date to a random date between the past 3 months and now
-          subscription.interval = INTERVALS[Math.floor(Math.random() * INTERVALS.length)];
-          subscription.paymentMethod = user.paymentMethods[0];
-          subscription.amount = Math.floor(Math.random() * 100) + 10;
-          subscription.nextPaymentDate = generateNextPaymentDates(subscription.startDate, subscription.interval)[0];
-          subscriptions.push(subscription);
+          for(let i=0; i<3; i++){
+            const subscription = new Subscription();
+            subscription.user = user;
+            subscription.startDate = new Date(new Date().getTime() - Math.floor(Math.random() * 7889400000) - 2592000000 * 12); // Set start date to a random date between the past 12 months and now
+            subscription.interval = INTERVALS[Math.floor(Math.random() * INTERVALS.length)];
+            subscription.paymentMethod = user.paymentMethods[0];
+            subscription.amount = Math.floor(Math.random() * 100) + 10;
+            subscription.nextPaymentDate = generateNextPaymentDates(subscription.startDate, subscription.interval)[0];
+            subscriptions.push(subscription);
+          }
         });
     
         // Insert subscriptions into database
