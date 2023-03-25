@@ -1,3 +1,5 @@
-import authenticationMutationTypeDef from './authentication.gql';
+import * as subscriptionMutationTypeDef from './subscription.gql';
 
-export default [authenticationMutationTypeDef];
+export default [
+    subscriptionMutationTypeDef,
+]

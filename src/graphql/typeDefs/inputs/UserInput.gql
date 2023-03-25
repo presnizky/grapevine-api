@@ -1,9 +1,0 @@
-input UserInput {
-  firstName: String
-  lastName: String
-  email: String
-  companyName: String
-  jobTitle: String
-  password: String
-  workPhone: String
-}

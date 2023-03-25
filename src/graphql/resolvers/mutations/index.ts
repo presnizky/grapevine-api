@@ -1,5 +1,5 @@
-import authenticationMutations from './authentication';
+import subscriptionMutations from './subscription';
 
 export default {
-  ...authenticationMutations,
+  ...subscriptionMutations,
 };

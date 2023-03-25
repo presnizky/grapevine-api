@@ -4,7 +4,7 @@ type PaymentMethod {
   name: String
   creditCardNumber: String
   expirationDate: DateTime
-  ccv: Integer
+  ccv: Int
   createdAt: DateTime
   updatedAt: DateTime    
 }

@@ -19,7 +19,7 @@ export class Donation extends BaseEntity {
   amount: number;
 
   @Column()
-  nextPaymentDate: Date;
+  paymentDate: Date;
   
   @CreateDateColumn()
   createdAt: Date;
