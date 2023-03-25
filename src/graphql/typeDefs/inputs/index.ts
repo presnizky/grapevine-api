@@ -1,4 +1,7 @@
-import signUpInputTypeDef from './SignUpInput.gql';
-import userInputTypeDef from './UserInput.gql';
+import * as donationInputTypeDef from './DonationInput.gql';
+import * as subscriptionInputTypeDef from './SubscriptionInput.gql';
 
-export default [signUpInputTypeDef, userInputTypeDef];
+export default [
+    donationInputTypeDef,
+    subscriptionInputTypeDef
+];

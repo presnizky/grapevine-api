@@ -4,7 +4,7 @@ type Donation {
   subscription: Subscription
   paymentMethod: PaymentMethod
   amount: Float
-  nextPaymentDate: DateTime
+  paymentDate: DateTime
   createdAt: DateTime
   updatedAt: DateTime
 }

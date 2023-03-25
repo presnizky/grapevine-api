@@ -5,6 +5,9 @@ type Subscription {
   interval: String
   paymentMethod: PaymentMethod
   amount: Float
+  nextPaymentDate: DateTime
+  donations: [Donation]
+  totalDonated: Float
   createdAt: DateTime
   updatedAt: DateTime    
 }

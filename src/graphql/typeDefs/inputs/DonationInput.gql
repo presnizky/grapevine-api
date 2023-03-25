@@ -1,0 +1,8 @@
+input DonationInput {
+  id: ID
+  userId: Int!
+  subscriptionId: Int!
+  paymentMethodId: Int!
+  amount: Float
+  paymentDate: DateTime
+}

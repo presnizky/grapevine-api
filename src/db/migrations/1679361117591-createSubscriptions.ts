@@ -1,5 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
-import { User, PaymentMethod, Subscription } from '@models';
+import { User, Subscription } from '@models';
+import { generateNextPaymentDates } from "@services/helpers/dates";
 
 const INTERVALS = ['monthly', 'quarterly', 'annual'];
 
@@ -19,6 +20,7 @@ export class createSubscriptions1679361117591 implements MigrationInterface {
           subscription.interval = INTERVALS[Math.floor(Math.random() * INTERVALS.length)];
           subscription.paymentMethod = user.paymentMethods[0];
           subscription.amount = Math.floor(Math.random() * 100) + 10;
+          subscription.nextPaymentDate = generateNextPaymentDates(subscription.startDate, subscription.interval)[0];
           subscriptions.push(subscription);
         });
     

@@ -1,0 +1,4 @@
+extend type Mutation {
+    charge_subscription(donation: DonationInput!): Subscription
+    update_subscription(subscription: SubscriptionInput!): Subscription
+}
