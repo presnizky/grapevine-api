@@ -1,6 +1,0 @@
-type PaymentType {
-  id: ID!
-  name: String
-  createdAt: DateTime
-  updatedAt: DateTime    
-}

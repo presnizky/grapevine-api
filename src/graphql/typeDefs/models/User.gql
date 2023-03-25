@@ -1,6 +1,7 @@
 type User {
   id: ID!
-  name: String
+  firstName: String
+  lastName: String
   createdAt: DateTime
   updatedAt: DateTime    
 }

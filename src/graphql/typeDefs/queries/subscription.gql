@@ -1,0 +1,4 @@
+extend type Query {
+    subscription(userId: ID!, subscriptionId: ID!): Subscription
+    subscriptions(userId: ID!): [Subscription]
+}

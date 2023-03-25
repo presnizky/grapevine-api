@@ -1,0 +1,3 @@
+extend type Query {
+    donations(userId: ID!, subscriptionId: ID!): [Donation]
+}

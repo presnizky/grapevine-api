@@ -1,5 +1,9 @@
-import users from './users';
+import userQueries from './user';
+import donationQueries from './donation';
+import subscriptionQueries from './subscription';
 
 export default {
-    ...users
-}
+  ...userQueries,
+  ...donationQueries,
+  ...subscriptionQueries,
+};

@@ -1,5 +1,5 @@
-import {BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
-import { Country, DocumentType, State} from '@models';
+import { Donation, PaymentMethod, Subscription } from '@models';
+import {BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -7,43 +7,19 @@ export class User extends BaseEntity {
     id: number;
     
     @Column()
-    name: string;
+    firstName: string;
 
     @Column()
     lastName: string;
 
-    @ManyToOne(() => DocumentType, (documentType) => documentType.id)
-    documentType: DocumentType;
+    @OneToMany(() => PaymentMethod, (paymentMethod) => paymentMethod.user)
+    paymentMethods: PaymentMethod[]
 
-    @Column()
-    documentNumber: string;
-    
-    @Column()
-    city: string;
+    @OneToMany(() => Subscription, (subscription) => subscription.user)
+    subscriptions: Subscription[]
 
-    @ManyToOne(() => State, (state) => state.id)
-    state: State;
-
-    @ManyToOne(() => Country, (country) => country.id)
-    country: Country;
-
-    @Column()
-    phoneNumber: string;
-
-    @Column()
-    whatsapp: string;
-
-    @Column()
-    email: string;
-
-    @Column()
-    facebook: string;
-
-    @Column()
-    twitter: string;
-
-    @Column()
-    instagram: string;
+    @OneToMany(() => Donation, (donation) => donation.user)
+    donations: Donation[]
 
     @CreateDateColumn()
     createdAt: Date;

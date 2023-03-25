@@ -1,6 +1,0 @@
-type Interval {
-  id: ID!
-  name: String
-  createdAt: DateTime
-  updatedAt: DateTime
-}

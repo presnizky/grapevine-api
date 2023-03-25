@@ -1,6 +1,0 @@
-type State {
-  id: ID!
-  name: String
-  createdAt: DateTime
-  updatedAt: DateTime    
-}
