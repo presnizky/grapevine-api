@@ -10,17 +10,19 @@ export class createDonations1679362047664 implements MigrationInterface {
         const donations: Donation[] = [];
 
         users.forEach(user => {
-          const nextPaymentDates = generateNextPaymentDates(user.subscriptions[0].startDate, user.subscriptions[0].interval, 3);
+          user.subscriptions.forEach(s => {
+            const nextPaymentDates = generateNextPaymentDates(s.startDate, s.interval, 3);
 
-          nextPaymentDates.forEach(nextPaymentDate => {
-            const donation = new Donation();
-
-            donation.user = user;
-            donation.subscription = user.subscriptions[0];
-            donation.paymentMethod = user.paymentMethods[0];
-            donation.amount = user.subscriptions[0].amount;
-            donation.paymentDate = getPreviousPaymentDate(user.subscriptions[0].startDate, user.subscriptions[0].interval);
-            donations.push(donation);
+            nextPaymentDates.forEach(nextPaymentDate => {
+              const donation = new Donation();
+  
+              donation.user = user;
+              donation.subscription = user.subscriptions[0];
+              donation.paymentMethod = user.paymentMethods[0];
+              donation.amount = user.subscriptions[0].amount;
+              donation.paymentDate = getPreviousPaymentDate(user.subscriptions[0].startDate, user.subscriptions[0].interval);
+              donations.push(donation);
+            });
           });
         });
 
