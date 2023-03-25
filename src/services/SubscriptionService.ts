@@ -5,11 +5,19 @@ import { GraphQLError } from "graphql";
 import cloneDeep from 'lodash.clonedeep';
 
 class SubscriptionService {
+    public static async getSubscription(userId: number, subscriptionId: number): Promise<Subscription> {
+        if((userId===null || userId=== undefined) || (subscriptionId===null || subscriptionId=== undefined)) return null;
+
+        const subscriptionRepository = AppDataSource.getRepository(Subscription)
+        const subscription = await subscriptionRepository.find({where: {id: subscriptionId, user: {id: userId}}, relations: {user: true, paymentMethod: true, donations: true}});
+        return subscription[0] || null;
+    }
+
     public static async getSubscriptions(userId: number): Promise<Subscription[]> {
         if(userId===null || userId=== undefined) return [];
 
         const subscriptionRepository = AppDataSource.getRepository(Subscription)
-        const subscriptions = await subscriptionRepository.find({where: {id: userId}, relations: {user: true, paymentMethod: true, donations: true}});
+        const subscriptions = await subscriptionRepository.find({where: {user: {id: userId}}, relations: {user: true, paymentMethod: true, donations: true}});
         return subscriptions;
     }
 
