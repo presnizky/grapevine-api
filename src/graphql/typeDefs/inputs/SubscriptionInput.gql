@@ -1,6 +1,6 @@
 input SubscriptionInput {
   id: ID!
-  userId: Int!
+  userId: ID!
   amount: Float
   interval: String
   nextPaymentDate: DateTime 
