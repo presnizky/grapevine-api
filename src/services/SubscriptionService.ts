@@ -59,7 +59,7 @@ class SubscriptionService {
         const subscriptionRepository = AppDataSource.getRepository(Subscription)
         const foundSubscription = await subscriptionRepository.findOne({
             where: {
-                id: subscription.subscriptionId,
+                id: subscription.id,
                 user: {id: subscription.userId} 
             },
             relations: {donations: true, user: true, paymentMethod: true}
@@ -69,11 +69,11 @@ class SubscriptionService {
 
         const donation = new Donation();
         const today = new Date();
-        const dateChanged = isSameDate(foundSubscription.nextPaymentDate, subscription.nextPaymentDate);
+        const dateChanged = !isSameDate(foundSubscription.nextPaymentDate, subscription.nextPaymentDate);
         const hasDonationsToday = foundSubscription.donations.filter(d => {return isSameDate(d.paymentDate, today)===true}).length > 0;
 
         //validate if the date was changed to today's date
-        if(dateChanged) {
+        if(dateChanged && isSameDate(subscription.nextPaymentDate, today)) {
             // check if there's a donation already processed today, otherwise charge a new donation
             if(!hasDonationsToday) {
                 // there's no donation charged today.  Add the donation
